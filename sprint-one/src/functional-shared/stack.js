@@ -20,9 +20,3 @@ stackMethods.push = function(input) {
   this.storage[this.key] = input; 
   this.key++; 
 };
-
-stackMethods.pop = function() {
-  this.key--;
-  if (this.key < 0) { this.key = 0; }
-  return this.storage[ this.key ];
-};
