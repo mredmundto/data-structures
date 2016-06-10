@@ -43,9 +43,8 @@ setBinarySearchTree.insert = function(input) {
   inner(this); 
 };  
 
-setBinarySearchTree.contains = function(input){
+setBinarySearchTree.contains = function(input) {
   var result = false; 
-
   var inner = function(node) {
     // if node value is the target, returns true 
     if (node.value === input) { 
@@ -64,8 +63,19 @@ setBinarySearchTree.contains = function(input){
   return result; 
 };  
 
-setBinarySearchTree.depthFirstLog = function(){};  
+setBinarySearchTree.depthFirstLog = function(callback) {
+  
+  var inner = function (node) {
+    // to invoke the callback on value
+    callback(node.value);
+    // to check if the value is undefined. Remarks: can not just check object 
+    if (node.left.value !== undefined) { inner(node.left); }
+    if (node.right.value !== undefined) { inner(node.right); }
+  };
+  inner(this);
+  
+};  
 
 /*
  * Complexity: What is the time complexity of the above functions?
- */
+ */ // insert = O(log n) and contains = O(log n) and depthFirstLog is linear 
