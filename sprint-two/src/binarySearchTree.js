@@ -43,7 +43,26 @@ setBinarySearchTree.insert = function(input) {
   inner(this); 
 };  
 
-setBinarySearchTree.contains = function(){};  
+setBinarySearchTree.contains = function(input){
+  var result = false; 
+
+  var inner = function(node) {
+    // if node value is the target, returns true 
+    if (node.value === input) { 
+      result = true;
+    // if input is smaller than node.value and there is a child node to the left   
+    } else if (input < node.value && node.left !== undefined) {
+      // invoke the function with left node
+      inner(node.left);
+    // do the same thing for right
+    } else if (input > node.value && node.right !== undefined) {
+      inner(node.right);
+    }
+    // exit when no child node left 
+  };
+  inner(this);
+  return result; 
+};  
 
 setBinarySearchTree.depthFirstLog = function(){};  
 
