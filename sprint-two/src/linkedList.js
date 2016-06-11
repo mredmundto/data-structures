@@ -27,22 +27,26 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    // set first object to check === list.head
-    var checkObj = list.head; 
-    // loop until last object is reached or object.next === null
-    while (checkObj.next !== null) {
-      if (checkObj.value === target) {
-        return true;
+    
+  //create helper function takes in node as input
+    var inner = function(node) {
+      // compare target with the value of the node
+      if (node.value === target) {
+        // return true
+        return true; 
       }
-      // change object to check into next object
-      checkObj = checkObj.next; 
-    }
-    // Dont forget to check the last object 
-    if (checkObj.value === target) {
-      return true;
-    }
-    // not found 
-    return false; 
+      //if there is next node
+      if (node.next !== null) {
+        //  there is next node, pass next node into helper function
+        return inner(node.next);
+      } else {
+        // else return false
+        return false;
+      }
+    //
+    };
+  // return helper passing in head  
+    return inner(this.head);
   };
 
   return list;

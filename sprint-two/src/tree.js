@@ -17,21 +17,15 @@ treeMethods.addChild = function(value) {
 treeMethods.contains = function(target) {
   
   var result = false; 
-  // inner(node, target){
-  var inner = function(node, target) {
-    // for, loop over children.length
-    for (var i = 0; i < node.children.length; i++) {
-      // if check if current child contains test 
-      if (node.children[i].value === target) {
-        result = true; 
-      }
-        // for loop over children.length 
-      if (node.children[i].children.length) {
-        inner(node.children[i], target );
-      }
+  var inner = function(node) {  
+    if (node.value === target) {
+      result = true; 
     }     
+    for (var i = 0; i < node.children.length; i ++) {
+      inner(node.children[i]);
+    } 
   }; 
-  inner(this, target);
+  inner(this);
   return result; 
 };
 
