@@ -73,3 +73,21 @@ var Node = function(value) {
  * Complexity: What is the time complexity of the above functions?
  */ 
  // addToTail and removeHead are constant. contains is linear 
+
+
+ // interview questions 
+// remove duplication in a linked list 
+
+// using contains
+//  var function check 
+//  recursive loop while next !== null 
+//  if (node.value = node.next.value){
+//   node.next = node.next.next
+//   check(node.next.next)
+//  }else{
+//   check(node.next)
+//  }
+
+
+
+
